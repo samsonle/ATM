@@ -4,17 +4,32 @@
 #include <iterator>
 using namespace std;
 
+class ATM {
+public:
+    void run();
+    void welcome_screen();
+    void input_account_number(){}
+    void input_account_password(){}
+    int get_command(){return 0;}
+    void run_command(){}
+};
+
 int main() {
+    ATM{}.run();
+}
 
-    int x;
-    vector<int> v = {1,2};
+void ATM::run()
+{
+    while (true) {
+        welcome_screen();
+        input_account_number();
+        input_account_password();
+        get_command();
+        run_command();
+    }
+}
 
-
-    ostream_iterator<int> os{cout, ", "};
-    copy(v.begin(), v.end(), os);
-    
-    auto foo = [&x](){ x = 42; };
-
-    foo();
-    cout << x << endl;
+void ATM::welcome_screen()
+{
+    cout << "Welcome to ATM - world thinnest" << endl;
 }
